@@ -1,0 +1,17 @@
+- name: File Copy
+  hosts: all
+  remote_user: opc
+  become: yes
+  become_method: sudo
+  vars:
+    username: caro
+  tasks:
+    - name: Copy file  to remote  machine
+      copy:
+        content: "This is just some dummy content"
+        dest: ~/ansible-tutorial-copy1.txt
+    - name: Create user
+      user:
+        name: caro
+        # group: tutorial
+        password: testpass
