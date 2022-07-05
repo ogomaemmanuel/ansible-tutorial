@@ -15,3 +15,11 @@
         name: caro
         # group: tutorial
         password: testpass
+- name: Second Play
+  hosts: all
+  tasks:
+    - name: Copy file  to remote  machine
+      copy:
+        content: "This is just some dummy content from second play"
+        dest: ~/ansible-tutorial-copy1.txt
+   
