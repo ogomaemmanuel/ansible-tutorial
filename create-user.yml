@@ -12,7 +12,7 @@
         dest: ~/ansible-tutorial-copy1.txt
     - name: Create user
       user:
-        name: caro
+        name: "{ username }"
         # group: tutorial
         password: testpass
 - name: Second Play
