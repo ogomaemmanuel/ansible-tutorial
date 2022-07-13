@@ -6,7 +6,7 @@
   tasks:
     - name: Copy file  to remote  machine
       copy:
-        src: /home/ogoma/ansible-tutorial.txt
+        content: "Just some awesome text"
         dest: ~/ansible-tutorial-copy1.txt
       # notify: restart_myslq
     - name: Create user
