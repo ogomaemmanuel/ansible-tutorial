@@ -1,25 +1,23 @@
-- name: File Copy
-  hosts: all
-  remote_user: opc
-  become: yes
-  become_method: sudo
-  vars:
-    username: caro
+ become_method: sudo
   tasks:
     - name: Copy file  to remote  machine
       copy:
-        content: "This is just some dummy content"
+        src: /home/ogoma/ansible-tutorial.txt
         dest: ~/ansible-tutorial-copy1.txt
+      # notify: restart_myslq
     - name: Create user
       user:
         name: "{{ username }}"
         # group: tutorial
-        password: testpass
-- name: Second Play
-  hosts: all
-  tasks:
-    - name: Copy file  to remote  machine
-      copy:
-        content: "This is just some dummy content from second play"
-        dest: ~/ansible-tutorial-copy1.txt
-   
+        password: "{{ password }}"
+      when: username == "test"
+
+      vars:
+        username: testuser
+        password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          33336539313765643165663664376430396335323632623036666633656334343337626334333963
+          6634396165613161316435663666613763383231663034620a333164303565633861643137343337
+          38333036666163653066613037393236656134393134333732316234663137303836646539336530
+          3866616639373934300a656237633630353534663039636161353965373134313437376538666234
+          6331
