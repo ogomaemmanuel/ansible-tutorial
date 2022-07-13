@@ -1,4 +1,8 @@
- become_method: sudo
+- name: File Copy
+  hosts: all
+  remote_user: opc
+  become: yes
+  become_method: sudo
   tasks:
     - name: Copy file  to remote  machine
       copy:
