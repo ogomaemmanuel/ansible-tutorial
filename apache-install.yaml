@@ -1,0 +1,23 @@
+- name: Echo Script Play
+  hosts: all
+  vars:
+     my_text: "Some long test"
+  tasks:
+    - name: Remove the apache package
+      package:
+        name: httpd
+        state: present
+      become: yes
+      become_method: sudo
+    - name: "Create file with content of my_text: variable"
+      shell: 
+        cmd: echo "{{ my_text }} {{ password }}" >> long_text.txt
+      vars:
+        my_text: "Some long test at task level"
+        password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          64666565363236656230623364326261613261663730356164313763643733303638356563373037
+          3565326565343835353661356136613964326639636535310a363461393538383830303630653561
+          30396538316439663835383735663735313434353934376466643635386332353466313630646531
+          6161643436393736610a383039616334653135613365356633316633623736396166656235336232
+          6236
