@@ -17,7 +17,7 @@
       when: username == "test"
 
       vars:
-        username: testuser
+        username: brenda
         password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           33336539313765643165663664376430396335323632623036666633656334343337626334333963
