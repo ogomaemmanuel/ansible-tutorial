@@ -14,7 +14,7 @@
         name: "{{ username }}"
         # group: tutorial
         password: "{{ password }}"
-      when: username == "test"
+      #when: username == "test"
 
       vars:
         username: brenda
